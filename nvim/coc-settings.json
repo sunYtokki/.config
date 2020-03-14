@@ -1,14 +1,28 @@
 {
     "tsserver.npm": "/usr/local/bin/npm",
+    "tsserver.log": "verbose",
     "coc.preferences.hoverTarget": "echo", 
+    "suggest.floatEnable": true,
     "coc.preferences.enableFloatHighlight": false,
     "coc.preferences.colorSupport": false,
-    "emmet.includeLanguage":{
-        "html": "htmldjango" 
+    "diagnostic.refreshOnInsertMode": true,
+    "snippets.extends": {
+      "cpp": ["c"],
+      "htmldjango": ["html"]
     },
+    "eslint.options": {
+        "configFile": "/Users/yt/.config/nvim/.eslintrc.json"
+    },
+    "html.enable": true,
+    "html.format.enable": true,
+    "html.filetypes": [
+    "html",
+    "htmldjango"
+    ],
     "python.autoComplete.extraPaths": [
       "${env:SPARK_HOME}/python",
       "${env:SPARK_HOME}/python/pyspark"
     ],
+    "python.formatting.blackPath": "~/.local/bin/black",
     "prettier.printWidth": 60
 }

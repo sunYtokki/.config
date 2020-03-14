@@ -3,14 +3,6 @@ call plug#begin('/Users/yt/.config/nvim/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'ctrlpvim/ctrlp.vim'
 
-    "Plug 'sheerun/vim-polyglot' "syntax highlighter
-    "Plug 'chrisbra/csv.vim'
-    "Plug 'othree/html5.vim'
-    "Plug 'elzr/vim-json'
-    "Plug 'pangloss/vim-javascript'
-    "Plug 'hail2u/vim-css3-syntax'
-    "Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -25,35 +17,18 @@ call plug#begin('/Users/yt/.config/nvim/plugged')
 
     Plug 'rizzatti/dash.vim'
 
-    Plug 'morhetz/gruvbox'
     Plug 'lifepillar/vim-solarized8'
-    "Plug 'junegunn/seoul256.vim'
 
 call plug#end()
 "======================================== colorscheme.
 set termguicolors
 
-"colorscheme seoul256
-    "let g:seoul256_background = 234
-
 colorscheme solarized8_flat
-"solarized dark || light,  _high || _low || _flat, normal || low || high
     set background=light
+    let g:solarized_visibility="high"
+    let g:solarized_statusline="high"
+"solarized dark || light,  _high || _low || _flat, normal || low || high
 
-    let g:solarized_visibility="normal"
-    let g:solarized_statusline="low"
-
-"colorscheme gruvbox
-"gruvbox dark || light, soft || medium || hard, 
-    "let g:gruvbox_italic = "1"
-    "let g:gruvbox_bold = "1"
-    "let g:gruvbox_italicize_comments = "1"
-    "let g:gruvbox_underline ="1"
-    "let g:gruvbox_contrast_light ="medium"
-    "let g:gruvbox_contrast_dark="medium"
-    "let g:gruvbox_italicize_strings="1"
-    "let g:gruvbox_guisp_fallback= "fg"
-    "set bg=light
 "=========================================== Coc
 ":checkhealth //this is neovim command
 ":CocInfo :CocConfig :CocList //hit tab to activate menu
@@ -83,22 +58,26 @@ set updatetime=150
 set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
 set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+" Use <Tab> and <S-Tab> to navigate the completion list <cr> to confirm
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>" 
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -112,6 +91,9 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+"Close the preview window when completion is done.
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Use K to show documentation in preview window.
 nnoremap <silent> H :call <SID>show_documentation()<CR>
@@ -144,10 +126,14 @@ nmap <leader>rn <Plug>(coc-rename)
 "coc-prettier
     vmap <leader>f  <Plug>(coc-format-selected)
     nmap <leader>f  <Plug>(coc-format-selected)
-"===============================================NerdTree
+"===============================================Nerds
 nmap <C-n> :NERDTreeToggle<CR>
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
+
+"autocmd FileType htmldjango setlocal ft=html
+autocmd FileType json syntax match Comment +\/\/.\+$+
+autocmd FileType htmldjango syntax match Comment +s/^\(.*\)$/<!-- \1 -->/+
 
 let g:NERDTreeGitStatusWithFlags = 1
 let g:NERDTreeIgnore = ['^node_modules$']
@@ -166,6 +152,7 @@ let g:gitgutter_terminal_reports_focus=0
     "\ "Clean"     : "✔︎",
     "\ "Unknown"   : "?"
 "}
+
 "========================================autopairs
 let g:AutoPairsShortcutFastWrap='<C-e>'
 let g:AutoPairsShortcutJump='<C-]>'
@@ -194,7 +181,6 @@ set clipboard+=unnamedplus
 set number!
 set mouse:a 
 set ignorecase
-set autoindent
 
 set backupdir^=~/.backup
 set dir^=~/.backup//
@@ -234,16 +220,9 @@ nnoremap wj <C-w><C-j>
 
 "tab seting
 set tabstop=4 shiftwidth=4 expandtab
-
 autocmd FileType text setlocal expandtab softtabstop=2 textwidth=76 spell spelllang=en_us
-autocmd FileType html setlocal shiftwidth=2 softtabstop=2 expandtab
-autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType html,javascript setlocal expandtab softtabstop=2 shiftwidth=2  
 
 "close buffer without closing window
-command! BW :bn|:bd#
-"=============================some notes
-"- `$XDG_CONFIG_HOME/nvim/init.vim` <=> `.vimrc` for configuration.
-"- `$XDG_CONFIG_HOME/nvim` instead of <=> `.vim` to store configuration files.
-"- `$XDG_DATA_HOME/nvim/shada/main.shada` <=> `.viminfo` 
-"to reset all maps
-    ":mapclear | mapclear <buffer> | mapclear! | mapclear! <buffer>
+command! W :bn|:bd#
+
