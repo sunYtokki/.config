@@ -11,7 +11,7 @@
       "htmldjango": ["html"]
     },
     "eslint.options": {
-        "configFile": "/Users/yt/.config/nvim/.eslintrc.json"
+        "configFile": "/Users/yt/.config/nvim/eslintrc.json"
     },
     "html.enable": true,
     "html.format.enable": true,

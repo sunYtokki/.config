@@ -24,9 +24,10 @@ call plug#end()
 set termguicolors
 
 colorscheme solarized8_flat
-    set background=light
+    set background=dark
     let g:solarized_visibility="high"
     let g:solarized_statusline="high"
+    let g:solarized_extra_hi_groups=1
 "solarized dark || light,  _high || _low || _flat, normal || low || high
 
 "=========================================== Coc
@@ -52,7 +53,7 @@ set nowritebackup
 " Give more space for displaying messages.
 set cmdheight=2
 
-set updatetime=150
+set updatetime=300
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
@@ -117,7 +118,7 @@ nmap <leader>rn <Plug>(coc-rename)
     xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
     nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
 
-"coc-highlight //:h coc-highlights   
+"coc-highlight occurrence
     autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "coc-snippets
@@ -131,9 +132,9 @@ nmap <C-n> :NERDTreeToggle<CR>
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 
-"autocmd FileType htmldjango setlocal ft=html
-autocmd FileType json syntax match Comment +\/\/.\+$+
-autocmd FileType htmldjango syntax match Comment +s/^\(.*\)$/<!-- \1 -->/+
+autocmd FileType htmldjango setlocal ft=html
+"autocmd FileType json syntax match Comment +\/\/.\+$+
+"autocmd FileType htmldjango syntax match Comment +s/^\(.*\)$/<!-- \1 -->/+
 
 let g:NERDTreeGitStatusWithFlags = 1
 let g:NERDTreeIgnore = ['^node_modules$']
@@ -185,6 +186,9 @@ set ignorecase
 set backupdir^=~/.backup
 set dir^=~/.backup//
 
+"eliminate delay esc
+"set timeoutlen=1000 ttimeoutlen=0
+
 nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
 nnoremap <Right> <Nop>
@@ -213,10 +217,10 @@ nnoremap <silent> <esc><esc> :noh<return>
 set listchars=eol:↪,space:•,tab:▒░,trail:░,extends:⟩,precedes:⟨
 
 " switch pane
-nnoremap wh <C-w><C-h>
-nnoremap wl <C-w><C-l>
-nnoremap wk <C-w><C-k>
-nnoremap wj <C-w><C-j>
+"nnoremap <leader>h <C-w><C-h>
+"nnoremap <leader>l <C-w><C-l>
+"nnoremap <leader>k <C-w><C-k>
+"nnoremap <leader>j <C-w><C-j>
 
 "tab seting
 set tabstop=4 shiftwidth=4 expandtab
@@ -224,5 +228,5 @@ autocmd FileType text setlocal expandtab softtabstop=2 textwidth=76 spell spelll
 autocmd FileType html,javascript setlocal expandtab softtabstop=2 shiftwidth=2  
 
 "close buffer without closing window
-command! W :bn|:bd#
+command! C :bn|:bd#
 
