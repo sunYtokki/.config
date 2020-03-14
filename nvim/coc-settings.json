@@ -1,0 +1,14 @@
+{
+    "tsserver.npm": "/usr/local/bin/npm",
+    "coc.preferences.hoverTarget": "echo", 
+    "coc.preferences.enableFloatHighlight": false,
+    "coc.preferences.colorSupport": false,
+    "emmet.includeLanguage":{
+        "html": "htmldjango" 
+    },
+    "python.autoComplete.extraPaths": [
+      "${env:SPARK_HOME}/python",
+      "${env:SPARK_HOME}/python/pyspark"
+    ],
+    "prettier.printWidth": 60
+}
