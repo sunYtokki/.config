@@ -32,6 +32,7 @@ set termguicolors
 "option: dark||light,  _high||_low||_flat, normal||low||high
 
 colorscheme gruvbox
+    set bg=light
     let g:gruvbox_italic = "1"
     let g:gruvbox_bold = "1"
     let g:gruvbox_italicize_comments = "1"
@@ -40,7 +41,6 @@ colorscheme gruvbox
     let g:gruvbox_contrast_dark="medium"
     let g:gruvbox_italicize_strings="1"
     let g:gruvbox_guisp_fallback= "fg"
-    set bg=dark
 "option: dark||light, soft||medium||hard, 
 "=========================================== Coc
 let g:coc_global_extensions = [
@@ -49,7 +49,8 @@ let g:coc_global_extensions = [
   \ 'coc-eslint', 
   \ 'coc-json', 
   \ 'coc-actions',
-  \ 'coc-highlight'
+  \ 'coc-highlight',
+  \ 'coc-snippets'
   \ ]
 
 " TextEdit might fail if hidden is not set.
@@ -104,8 +105,8 @@ nmap <silent> gr <Plug>(coc-references)
 "Close the preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-" Use H to show documentation in preview window.
-nnoremap <silent> H :call <SID>show_documentation()<CR>
+" Use + to show documentation in preview window.
+nnoremap <silent> + :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -130,15 +131,15 @@ nmap <leader>rn <Plug>(coc-rename)
     autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "coc-snippets
-    imap <C-+> <Plug>(coc-snippets-expand)
+    imap <C-n> <Plug>(coc-snippets-expand)
 
 "coc-prettier
     vmap <leader>f  <Plug>(coc-format-selected)
     nmap <leader>f  <Plug>(coc-format-selected)
 "===============================================Nerds
 nmap <C-n> :NERDTreeToggle<CR>
-vmap ++ <plug>NERDCommenterToggle
-nmap ++ <plug>NERDCommenterToggle
+vmap -- <plug>NERDCommenterToggle
+nmap -- <plug>NERDCommenterToggle
 
 autocmd FileType htmldjango setlocal ft=html
 "autocmd FileType json syntax match Comment +\/\/.\+$+
@@ -169,7 +170,7 @@ let g:AutoPairsShortcutJump='<C-]>'
 let g:AutoPairsMapCh = 0
 "==========================================autosave
 let g:auto_save = 1
-let g:auto_save_events = ["InsertLeave", "TextChanged"]
+"let g:auto_save_events = ["InsertLeave", "TextChanged"]
 "=========================================save fold
 set foldmethod=manual
 augroup remember_folds
@@ -196,10 +197,11 @@ set ignorecase
 set backupdir^=~/.backup
 set dir^=~/.backup//
 
-nnoremap <Down> <Nop>
-nnoremap <Left> <Nop>
-nnoremap <Right> <Nop>
-nnoremap <Up> <Nop>
+
+"nnoremap <Down> <Nop>
+"nnoremap <Left> <Nop>
+"nnoremap <Right> <Nop>
+"nnoremap <Up> <Nop>
 
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
@@ -208,7 +210,7 @@ inoremap <C-l> <Right>
 
 "insert scpace in normalmode
 nnoremap <Space> i<Space><esc>
-nnoremap <Return> o<esc>
+nnoremap <Return> o<Space><BS><esc>
 
 "switch to visual mode shortcut
 imap <C-v> <BS>v
@@ -228,6 +230,12 @@ nnoremap <C-h> <C-w><C-h>
 nnoremap <C-l> <C-w><C-l>
 nnoremap <C-k> <C-w><C-k>
 nnoremap <C-j> <C-w><C-j>
+
+"resize pane
+noremap <C-S-j> :resize +1<CR>
+noremap <C-S-k> :resize -1<CR>
+noremap <C-S-h> :vertical resize -1<CR>
+noremap <C-S-l> :vertical resize +1<CR>
 
 "tab seting
 set tabstop=4 shiftwidth=4 expandtab
