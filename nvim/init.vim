@@ -18,22 +18,31 @@ call plug#begin('/Users/yt/.config/nvim/plugged')
     Plug 'rizzatti/dash.vim'
 
     Plug 'lifepillar/vim-solarized8'
+    Plug 'morhetz/gruvbox'
 
 call plug#end()
 "======================================== colorscheme.
 set termguicolors
 
-colorscheme solarized8_flat
-    set background=dark
-    let g:solarized_visibility="high"
-    let g:solarized_statusline="high"
-    let g:solarized_extra_hi_groups=1
-"solarized dark || light,  _high || _low || _flat, normal || low || high
+"colorscheme solarized8_flat
+    "set background=dark
+    "let g:solarized_visibility="high"
+    "let g:solarized_statusline="high"
+    "let g:solarized_extra_hi_groups=1
+"option: dark||light,  _high||_low||_flat, normal||low||high
 
+colorscheme gruvbox
+    let g:gruvbox_italic = "1"
+    let g:gruvbox_bold = "1"
+    let g:gruvbox_italicize_comments = "1"
+    let g:gruvbox_underline ="1"
+    let g:gruvbox_contrast_light ="medium"
+    let g:gruvbox_contrast_dark="medium"
+    let g:gruvbox_italicize_strings="1"
+    let g:gruvbox_guisp_fallback= "fg"
+    set bg=dark
+"option: dark||light, soft||medium||hard, 
 "=========================================== Coc
-":checkhealth //this is neovim command
-":CocInfo :CocConfig :CocList //hit tab to activate menu
-
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-tsserver',
@@ -64,7 +73,6 @@ set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -77,15 +85,15 @@ inoremap <silent><expr> <TAB>
 
 " Use <Tab> and <S-Tab> to navigate the completion list <cr> to confirm
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>" 
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> g[ <Plug>(coc-diagnostic-prev)
+nmap <silent> g] <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -96,7 +104,7 @@ nmap <silent> gr <Plug>(coc-references)
 "Close the preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-" Use K to show documentation in preview window.
+" Use H to show documentation in preview window.
 nnoremap <silent> H :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
@@ -118,7 +126,7 @@ nmap <leader>rn <Plug>(coc-rename)
     xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
     nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
 
-"coc-highlight occurrence
+"coc-highlight all occurrence
     autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "coc-snippets
@@ -171,7 +179,9 @@ augroup remember_folds
 augroup END
 "=================================change cursur insert mode
 "highlite line when insert mode
-autocmd InsertEnter,InsertLeave * set cul!
+"autocmd InsertEnter,InsertLeave * set cul!
+autocmd InsertEnter * set cul
+autocmd InsertLeave * set nocul
 
 "change cursor when insert mode :help guicursor
 :set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
@@ -185,9 +195,6 @@ set ignorecase
 
 set backupdir^=~/.backup
 set dir^=~/.backup//
-
-"eliminate delay esc
-"set timeoutlen=1000 ttimeoutlen=0
 
 nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
@@ -203,7 +210,7 @@ inoremap <C-l> <Right>
 nnoremap <Space> i<Space><esc>
 nnoremap <Return> o<esc>
 
-"switch to v mode from i mode
+"switch to visual mode shortcut
 imap <C-v> <BS>v
 
 "keep visual selection when shift indent
@@ -213,20 +220,20 @@ vnoremap > >gv
 "clear highlights on hitting ESC twice
 nnoremap <silent> <esc><esc> :noh<return>
 
-" set list showbreak=↪\
+" :set list
 set listchars=eol:↪,space:•,tab:▒░,trail:░,extends:⟩,precedes:⟨
 
-" switch pane
-"nnoremap <leader>h <C-w><C-h>
-"nnoremap <leader>l <C-w><C-l>
-"nnoremap <leader>k <C-w><C-k>
-"nnoremap <leader>j <C-w><C-j>
+" naviate between pane
+nnoremap <C-h> <C-w><C-h>
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-j> <C-w><C-j>
 
 "tab seting
 set tabstop=4 shiftwidth=4 expandtab
 autocmd FileType text setlocal expandtab softtabstop=2 textwidth=76 spell spelllang=en_us
 autocmd FileType html,javascript setlocal expandtab softtabstop=2 shiftwidth=2  
 
-"close buffer without closing window
-command! C :bn|:bd#
+"close buffer without closing split pane
+command! BD :bn|:bd#
 
