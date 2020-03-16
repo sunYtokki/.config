@@ -32,7 +32,7 @@ set termguicolors
 "option: dark||light,  _high||_low||_flat, normal||low||high
 
 colorscheme gruvbox
-    set bg=light
+    set bg=dark
     let g:gruvbox_italic = "1"
     let g:gruvbox_bold = "1"
     let g:gruvbox_italicize_comments = "1"
@@ -197,11 +197,10 @@ set ignorecase
 set backupdir^=~/.backup
 set dir^=~/.backup//
 
-
-"nnoremap <Down> <Nop>
-"nnoremap <Left> <Nop>
-"nnoremap <Right> <Nop>
-"nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+nnoremap <Up> <Nop>
 
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
@@ -232,10 +231,10 @@ nnoremap <C-k> <C-w><C-k>
 nnoremap <C-j> <C-w><C-j>
 
 "resize pane
-noremap <C-S-j> :resize +1<CR>
-noremap <C-S-k> :resize -1<CR>
-noremap <C-S-h> :vertical resize -1<CR>
-noremap <C-S-l> :vertical resize +1<CR>
+noremap <silent> <S-j> :resize +1<CR>
+noremap <silent> <S-k> :resize -1<CR>
+noremap <silent> <S-h> :vertical resize -1<CR>
+noremap <silent> <S-l> :vertical resize +1<CR>
 
 "tab seting
 set tabstop=4 shiftwidth=4 expandtab
