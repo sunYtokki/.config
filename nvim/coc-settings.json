@@ -16,13 +16,31 @@
     "html.enable": true,
     "html.format.enable": true,
     "html.filetypes": [
-    "html",
-    "htmldjango"
+        "html",
+        "htmldjango"
     ],
     "python.autoComplete.extraPaths": [
       "${env:SPARK_HOME}/python",
       "${env:SPARK_HOME}/python/pyspark"
     ],
     "python.formatting.blackPath": "~/.local/bin/black",
-    "prettier.printWidth": 60
+    "prettier.printWidth": 60,
+    "smartf.timeout": 3000,
+    
+    "clangd.path": "/usr/local/opt/llvm/bin/clangd",
+    "clangd.enabled": false,
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": ["c", "cpp", "objc", "objcpp"],
+            "rootPatterns": [".ccls", ".ccls-root", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                },
+                "clang": {
+                    "resourceDir": "/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0"}
+            }
+        }
+    }
 }

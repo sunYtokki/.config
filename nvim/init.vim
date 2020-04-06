@@ -1,8 +1,11 @@
 call plug#begin('/Users/yt/.config/nvim/plugged')
 
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'sheerun/vim-polyglot'
 
+    "file navigation
+    Plug 'ctrlpvim/ctrlp.vim'
+    
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -12,26 +15,26 @@ call plug#begin('/Users/yt/.config/nvim/plugged')
     Plug 'scrooloose/nerdcommenter'
     Plug 'optroot/auto-pairs'
     Plug 'tpope/vim-surround'
-
     Plug '907th/vim-auto-save'
 
-    Plug 'rizzatti/dash.vim'
-
+    "colorschemes
     Plug 'lifepillar/vim-solarized8'
     Plug 'morhetz/gruvbox'
+    
+    Plug 'darfink/vim-plist' "plist viewer
 
 call plug#end()
 "======================================== colorscheme.
 set termguicolors
 
-"colorscheme solarized8_flat
+"option: dark||light,  _high||_low||_flat, normal||low||high
     "set background=dark
     "let g:solarized_visibility="high"
     "let g:solarized_statusline="high"
     "let g:solarized_extra_hi_groups=1
-"option: dark||light,  _high||_low||_flat, normal||low||high
+    "colorscheme solarized8_flat
 
-colorscheme gruvbox
+"option: dark||light, soft||medium||hard, 
     set bg=dark
     let g:gruvbox_italic = "1"
     let g:gruvbox_bold = "1"
@@ -41,16 +44,15 @@ colorscheme gruvbox
     let g:gruvbox_contrast_dark="medium"
     let g:gruvbox_italicize_strings="1"
     let g:gruvbox_guisp_fallback= "fg"
-"option: dark||light, soft||medium||hard, 
+    colorscheme gruvbox
 "=========================================== Coc
 let g:coc_global_extensions = [
   \ 'coc-snippets',
+  \ 'coc-actions',
+  \ 'coc-highlight',
   \ 'coc-tsserver',
   \ 'coc-eslint', 
   \ 'coc-json', 
-  \ 'coc-actions',
-  \ 'coc-highlight',
-  \ 'coc-snippets'
   \ ]
 
 " TextEdit might fail if hidden is not set.
@@ -122,7 +124,7 @@ nmap <leader>rn <Plug>(coc-rename)
 "coc-action
     " Remap for do codeAction of selected region
     function! s:cocActionsOpenFromSelected(type) abort
-      execute 'CocCommand actions.open ' . a:type
+      execute 'CocCommand actions.open' . a:type
     endfunction
     xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
     nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
@@ -131,11 +133,24 @@ nmap <leader>rn <Plug>(coc-rename)
     autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "coc-snippets
-    imap <C-n> <Plug>(coc-snippets-expand)
+    "imap <C-/> <Plug>(coc-snippets-expand)
+    
+    "Use <C-j> for jump to next placeholder, it's default of coc.nvim
+    let g:coc_snippet_next = '<C-,>'
+    " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+    let g:coc_snippet_prev = '<C-.>'
 
 "coc-prettier
     vmap <leader>f  <Plug>(coc-format-selected)
     nmap <leader>f  <Plug>(coc-format-selected)
+
+"coc-smartf
+nmap f <Plug>(coc-smartf-forward)
+nmap F <Plug>(coc-smartf-backward)
+augroup Smartf
+  autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=#6638F0
+  autocmd User SmartfLeave :hi Conceal ctermfg=239 guifg=#504945
+augroup end
 "===============================================Nerds
 nmap <C-n> :NERDTreeToggle<CR>
 vmap -- <plug>NERDCommenterToggle
@@ -231,10 +246,10 @@ nnoremap <C-k> <C-w><C-k>
 nnoremap <C-j> <C-w><C-j>
 
 "resize pane
-noremap <silent> <S-j> :resize +1<CR>
-noremap <silent> <S-k> :resize -1<CR>
-noremap <silent> <S-h> :vertical resize -1<CR>
-noremap <silent> <S-l> :vertical resize +1<CR>
+"noremap <silent> <S-j> :resize +1<CR>
+"noremap <silent> <S-k> :resize -1<CR>
+noremap <silent> <S-down> :vertical resize -1<CR>
+noremap <silent> <S-up> :vertical resize +1<CR>
 
 "tab seting
 set tabstop=4 shiftwidth=4 expandtab
@@ -243,4 +258,3 @@ autocmd FileType html,javascript setlocal expandtab softtabstop=2 shiftwidth=2
 
 "close buffer without closing split pane
 command! BD :bn|:bd#
-
