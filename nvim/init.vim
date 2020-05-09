@@ -18,33 +18,28 @@ call plug#begin('/Users/yt/.config/nvim/plugged')
     Plug '907th/vim-auto-save'
 
     "colorschemes
-    Plug 'lifepillar/vim-solarized8'
+    Plug 'mhartington/oceanic-next'
     Plug 'morhetz/gruvbox'
     
-    Plug 'darfink/vim-plist' "plist viewer
+    "Plug 'darfink/vim-plist' "plist viewer
 
 call plug#end()
 "======================================== colorscheme.
 set termguicolors
 
-"option: dark||light,  _high||_low||_flat, normal||low||high
-    "set background=dark
-    "let g:solarized_visibility="high"
-    "let g:solarized_statusline="high"
-    "let g:solarized_extra_hi_groups=1
-    "colorscheme solarized8_flat
-
 "option: dark||light, soft||medium||hard, 
-    set bg=dark
     let g:gruvbox_italic = "1"
-    let g:gruvbox_bold = "1"
-    let g:gruvbox_italicize_comments = "1"
-    let g:gruvbox_underline ="1"
-    let g:gruvbox_contrast_light ="medium"
-    let g:gruvbox_contrast_dark="medium"
     let g:gruvbox_italicize_strings="1"
-    let g:gruvbox_guisp_fallback= "fg"
-    colorscheme gruvbox
+    let g:gruvbox_italicize_comments = "1"
+    "let g:gruvbox_bold = "1"
+    "let g:gruvbox_underline ="1"
+    "let g:gruvbox_contrast_light ="medium"
+    "let g:gruvbox_contrast_dark="medium"
+    set bg=light
+    "colorscheme gruvbox
+
+    let g:oceanic_next_terminal_italic = 1
+    colorscheme OceanicNext
 "=========================================== Coc
 let g:coc_global_extensions = [
   \ 'coc-snippets',
@@ -91,8 +86,8 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 "inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+" Use <c-n> to trigger completion.
+inoremap <silent><expr> <c-n> coc#refresh()
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> g[ <Plug>(coc-diagnostic-prev)
@@ -135,9 +130,9 @@ nmap <leader>rn <Plug>(coc-rename)
 "coc-snippets
     "imap <C-/> <Plug>(coc-snippets-expand)
     
-    "Use <C-j> for jump to next placeholder, it's default of coc.nvim
+    "jump to next placeholder, it's default of coc.nvim
     let g:coc_snippet_next = '<C-,>'
-    " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+    "jump to previous placeholder, it's default of coc.nvim
     let g:coc_snippet_prev = '<C-.>'
 
 "coc-prettier
@@ -151,6 +146,7 @@ augroup Smartf
   autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=#6638F0
   autocmd User SmartfLeave :hi Conceal ctermfg=239 guifg=#504945
 augroup end
+
 "===============================================Nerds
 nmap <C-n> :NERDTreeToggle<CR>
 vmap -- <plug>NERDCommenterToggle
@@ -185,7 +181,12 @@ let g:AutoPairsShortcutJump='<C-]>'
 let g:AutoPairsMapCh = 0
 "==========================================autosave
 let g:auto_save = 1
+"noremap <leader>as :let auto_save = 1<CR>
 "let g:auto_save_events = ["InsertLeave", "TextChanged"]
+"
+"==========================================ctrlp
+let g:ctrlp_cmd = 'CtrlPBuffer'
+
 "=========================================save fold
 set foldmethod=manual
 augroup remember_folds
@@ -200,9 +201,9 @@ autocmd InsertEnter * set cul
 autocmd InsertLeave * set nocul
 
 "change cursor when insert mode :help guicursor
-:set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-  \,a:blinkwait500-blinkoff500-blinkon350
-  \,sm:block-blinkwait500-blinkoff400-blinkon250
+":set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+  "\,a:blinkwait500-blinkoff500-blinkon350
+  "\,sm:block-blinkwait500-blinkoff400-blinkon250
 "================================== misc ogvim setting
 set clipboard+=unnamedplus
 set number!
@@ -211,6 +212,25 @@ set ignorecase
 
 set backupdir^=~/.backup
 set dir^=~/.backup//
+
+
+"==================================== statusline
+set statusline=
+set statusline+=%#IncSearch#
+set statusline+=%y
+set statusline+=%r
+set statusline+=%M
+set statusline+=%#CursorLineNr#
+"set statusline+=\ %F
+set statusline+=%{expand('%:~:h')}/
+set statusline+=%#SpellRare#
+set statusline+=%t
+"set statusline+=\ %t
+set statusline+=%#CursorLineNr#
+set statusline+=%= "Right side settings
+set statusline+=%l/%L
+set statusline+=:%c
+"set statusline+=\ [%n]
 
 nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
@@ -223,7 +243,7 @@ inoremap <C-k> <Up>
 inoremap <C-l> <Right>
 
 "insert scpace in normalmode
-nnoremap <Space> i<Space><esc>
+"nnoremap <Space> i<Space><esc>
 nnoremap <Return> o<Space><BS><esc>
 
 "switch to visual mode shortcut
@@ -246,10 +266,12 @@ nnoremap <C-k> <C-w><C-k>
 nnoremap <C-j> <C-w><C-j>
 
 "resize pane
-"noremap <silent> <S-j> :resize +1<CR>
-"noremap <silent> <S-k> :resize -1<CR>
-noremap <silent> <S-down> :vertical resize -1<CR>
-noremap <silent> <S-up> :vertical resize +1<CR>
+if bufwinnr(1)
+    noremap <S-up> :resize +1<CR>
+    noremap <S-down> :resize -1<CR>
+    noremap <S-right> :vertical resize +1<CR>
+    noremap <S-up> :vertical resize -1<CR>
+endif
 
 "tab seting
 set tabstop=4 shiftwidth=4 expandtab
