@@ -20,8 +20,6 @@ call plug#begin('/Users/yt/.config/nvim/plugged')
     "colorschemes
     Plug 'mhartington/oceanic-next'
     Plug 'morhetz/gruvbox'
-    
-    "Plug 'darfink/vim-plist' "plist viewer
 
 call plug#end()
 "======================================== colorscheme.
@@ -36,10 +34,10 @@ set termguicolors
     "let g:gruvbox_contrast_light ="medium"
     "let g:gruvbox_contrast_dark="medium"
     set bg=light
-    "colorscheme gruvbox
+    colorscheme gruvbox
 
     let g:oceanic_next_terminal_italic = 1
-    colorscheme OceanicNext
+    "colorscheme OceanicNext
 "=========================================== Coc
 let g:coc_global_extensions = [
   \ 'coc-snippets',
@@ -71,15 +69,15 @@ set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 " Use <Tab> and <S-Tab> to navigate the completion list <cr> to confirm
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>" 
@@ -213,24 +211,24 @@ set ignorecase
 set backupdir^=~/.backup
 set dir^=~/.backup//
 
-
 "==================================== statusline
 set statusline=
-set statusline+=%#IncSearch#
+set statusline+=%#CocListGreyBlue#
 set statusline+=%y
 set statusline+=%r
 set statusline+=%M
-set statusline+=%#CursorLineNr#
-"set statusline+=\ %F
-set statusline+=%{expand('%:~:h')}/
-set statusline+=%#SpellRare#
+set statusline+=%#vimFold#
+set statusline+=\ %{expand('%:~:h')}/
+set statusline+=%#TabLineSel#
 set statusline+=%t
-"set statusline+=\ %t
-set statusline+=%#CursorLineNr#
 set statusline+=%= "Right side settings
+set statusline+=%#vimFold#
+set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}\ 
+set statusline+=%#StatusLine#
 set statusline+=%l/%L
-set statusline+=:%c
-"set statusline+=\ [%n]
+set statusline+=:%c\ 
+set statusline+=%#CocListGreyBlue#
+set statusline+=[%n]
 
 nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
