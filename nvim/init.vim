@@ -25,19 +25,28 @@ call plug#end()
 "=========================================== colorscheme.
 set termguicolors
 
-"option: dark||light, soft||medium||hard, 
     let g:gruvbox_italic = "1"
     let g:gruvbox_italicize_strings="1"
     let g:gruvbox_italicize_comments = "1"
-    "let g:gruvbox_bold = "1"
-    "let g:gruvbox_underline ="1"
-    "let g:gruvbox_contrast_light ="medium"
-    "let g:gruvbox_contrast_dark="medium"
     set bg=light
-    colorscheme gruvbox
+"colorscheme gruvbox
 
     let g:oceanic_next_terminal_italic = 1
-    "colorscheme OceanicNext
+colorscheme OceanicNext
+
+if(&background ==# 'light')
+    "gruvbox light stline 
+    highlight StLineBgOn ctermfg=229 ctermbg=65 guifg=#fbf1c7 guibg=#458588
+    highlight StLineConceal cterm=italic ctermfg=243 ctermbg=233 gui=italic guifg=#7c6f64 guibg=#ebdbb2
+    highlight StLineDefault ctermfg=243 ctermbg=233 guifg=#7c6f64 guibg=#ebdbb2
+    highlight StLineDir cterm=bold ctermfg=65 ctermbg=233 gui=bold guifg=#458588 guibg=#ebdbb2
+else
+    "oceanic next stline
+    highlight StLineBgOn ctermfg=237 ctermbg=68 guifg=#343d46 guibg=#6699cc
+    highlight StLineConceal cterm=italic ctermfg=145 ctermbg=237 gui=italic guifg=#a7adba guibg=#343d46
+    highlight StLineDefault ctermfg=145 ctermbg=237 guifg=#a7adba guibg=#343d46
+    highlight StLineDir cterm=bold ctermfg=68 ctermbg=237 gui=bold guifg=#6699cc guibg=#343d46
+endif
 "=========================================== Coc
 let g:coc_global_extensions = [
   \ 'coc-snippets',
@@ -223,25 +232,6 @@ set ignorecase
 set backupdir^=~/.backup
 set dir^=~/.backup//
 
-"statusline
-set statusline=
-set statusline+=%#CocListGreyBlue#
-set statusline+=%y
-set statusline+=%r
-set statusline+=%M
-set statusline+=%#vimFold#
-set statusline+=\ %{expand('%:~:h')}/
-set statusline+=%#TabLineSel#
-set statusline+=%t
-set statusline+=%= "Right side settings
-set statusline+=%#vimFold#
-set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}\ 
-set statusline+=%#StatusLine#
-set statusline+=%l/%L
-set statusline+=:%c\ 
-set statusline+=%#CocListGreyBlue#
-set statusline+=[%n]
-
 "tab seting
 set tabstop=4 shiftwidth=4 expandtab
 autocmd FileType text setlocal expandtab softtabstop=2 textwidth=76 spell spelllang=en_us
@@ -295,3 +285,22 @@ if bufwinnr(1)
     noremap <S-up> :vertical resize -1<CR>
 endif
 
+"=========================================== statusline
+
+set statusline=
+set statusline+=%#StLineBgOn#
+set statusline+=%y
+set statusline+=%r
+set statusline+=%M
+set statusline+=%#StLineConceal#
+set statusline+=\ %{expand('%:~:h')}/
+set statusline+=%#StLineDir#
+set statusline+=%t
+set statusline+=%= "Right side settings
+set statusline+=%#StLineConceal#
+set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}\ 
+set statusline+=%#StLineDefault#
+set statusline+=%l/%L
+set statusline+=:%c\ 
+set statusline+=%#StLineBgOn#
+set statusline+=[%n]
