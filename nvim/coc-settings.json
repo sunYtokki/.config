@@ -4,7 +4,7 @@
     "coc.preferences.hoverTarget": "echo", 
     "suggest.floatEnable": true,
     "coc.preferences.enableFloatHighlight": false,
-    "coc.preferences.colorSupport": false,
+    "coc.preferences.colorSupport": true,
     "diagnostic.refreshOnInsertMode": true,
     "snippets.extends": {
       "cpp": ["c"],

@@ -34,15 +34,19 @@ set termguicolors
     let g:oceanic_next_terminal_italic = 1
 colorscheme OceanicNext
 
+noremap <leader>light :colo gruvbox<CR> :set bg=light<CR>
+noremap <leader>dark :colo OceanicNext<CR>
+
+"custom highlight statusline
 if(&background ==# 'light')
     "gruvbox light stline 
-    highlight StLineBgOn ctermfg=229 ctermbg=65 guifg=#fbf1c7 guibg=#458588
+    highlight StLineBgOn ctermfg=229 ctermbg=72 guifg=#fbf1c7 guibg=#689d6a
     highlight StLineConceal cterm=italic ctermfg=243 ctermbg=233 gui=italic guifg=#7c6f64 guibg=#ebdbb2
     highlight StLineDefault ctermfg=243 ctermbg=233 guifg=#7c6f64 guibg=#ebdbb2
-    highlight StLineDir cterm=bold ctermfg=65 ctermbg=233 gui=bold guifg=#458588 guibg=#ebdbb2
+    highlight StLineDir cterm=bold ctermfg=132 ctermbg=233 gui=bold guifg=#b16286 guibg=#ebdbb2
 else
     "oceanic next stline
-    highlight StLineBgOn ctermfg=237 ctermbg=68 guifg=#343d46 guibg=#6699cc
+    highlight StLineBgOn ctermfg=237 ctermbg=73 guifg=#343d46 guibg=#62b3b2
     highlight StLineConceal cterm=italic ctermfg=145 ctermbg=237 gui=italic guifg=#a7adba guibg=#343d46
     highlight StLineDefault ctermfg=145 ctermbg=237 guifg=#a7adba guibg=#343d46
     highlight StLineDir cterm=bold ctermfg=68 ctermbg=237 gui=bold guifg=#6699cc guibg=#343d46
@@ -181,6 +185,9 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \}
 
+"gitgutter
+let g:gitgutter_git_executable = '/usr/local/bin/git'
+let g:gitgutter_max_signs = 500
 let g:gitgutter_terminal_reports_focus=0
 
 "Nerd Commenter
