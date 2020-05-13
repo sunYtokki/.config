@@ -34,23 +34,9 @@ set termguicolors
     let g:oceanic_next_terminal_italic = 1
 colorscheme OceanicNext
 
-noremap <leader>light :colo gruvbox<CR> :set bg=light<CR>
-noremap <leader>dark :colo OceanicNext<CR>
+noremap  <silent><leader>light :colo gruvbox<CR> :set bg=light<CR>
+noremap  <silent><leader>dark :colo OceanicNext<CR>
 
-"custom highlight statusline
-if(&background ==# 'light')
-    "gruvbox light stline 
-    highlight StLineBgOn ctermfg=229 ctermbg=72 guifg=#fbf1c7 guibg=#689d6a
-    highlight StLineConceal cterm=italic ctermfg=243 ctermbg=233 gui=italic guifg=#7c6f64 guibg=#ebdbb2
-    highlight StLineDefault ctermfg=243 ctermbg=233 guifg=#7c6f64 guibg=#ebdbb2
-    highlight StLineDir cterm=bold ctermfg=132 ctermbg=233 gui=bold guifg=#b16286 guibg=#ebdbb2
-else
-    "oceanic next stline
-    highlight StLineBgOn ctermfg=237 ctermbg=73 guifg=#343d46 guibg=#62b3b2
-    highlight StLineConceal cterm=italic ctermfg=145 ctermbg=237 gui=italic guifg=#a7adba guibg=#343d46
-    highlight StLineDefault ctermfg=145 ctermbg=237 guifg=#a7adba guibg=#343d46
-    highlight StLineDir cterm=bold ctermfg=68 ctermbg=237 gui=bold guifg=#6699cc guibg=#343d46
-endif
 "=========================================== Coc
 let g:coc_global_extensions = [
   \ 'coc-snippets',
@@ -150,8 +136,10 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 
 "coc-snippets
 imap <C-/> <Plug>(coc-snippets-expand)
-let g:coc_snippet_next = '<C-,>' "jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<C-.>' "jump to previous placeholder, it's default of coc.nvim
+    "jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<C-]>' 
+    "jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<C-[>' 
 
 "coc-prettier
 vmap <leader>f  <Plug>(coc-format-selected)
@@ -214,6 +202,20 @@ noremap <leader>ns :let auto_save = 0<CR>
 let g:ctrlp_cmd = 'CtrlPBuffer'
 
 "=========================================== custom vim setting
+" Persistent undo
+set undofile
+set undodir=$HOME/.config/nvim/undo
+set undolevels=1000
+set undoreload=10000
+
+"misc
+set clipboard+=unnamedplus
+set number!
+set mouse:a 
+set ignorecase
+set backupdir^=~/.backup
+set dir^=~/.backup//
+
 "save fold
 set foldmethod=manual
 augroup remember_folds
@@ -231,21 +233,10 @@ autocmd InsertLeave * set nocul
   "\,a:blinkwait500-blinkoff500-blinkon350
   "\,sm:block-blinkwait500-blinkoff400-blinkon250
 
-set clipboard+=unnamedplus
-set number!
-set mouse:a 
-set ignorecase
-
-set backupdir^=~/.backup
-set dir^=~/.backup//
-
-"tab seting
+"indent seting by file type
 set tabstop=4 shiftwidth=4 expandtab
 autocmd FileType text setlocal expandtab softtabstop=2 textwidth=76 spell spelllang=en_us
 autocmd FileType html,javascript setlocal expandtab softtabstop=2 shiftwidth=2  
-
-"close buffer without closing split pane
-command! BD :bn|:bd#
 
 "key mapping
     "disable arrows on nmap
@@ -289,11 +280,14 @@ if bufwinnr(1)
     noremap <S-up> :resize +1<CR>
     noremap <S-down> :resize -1<CR>
     noremap <S-right> :vertical resize +1<CR>
-    noremap <S-up> :vertical resize -1<CR>
+    noremap <S-left> :vertical resize -1<CR>
 endif
 
-"=========================================== statusline
+    "close buffer without closing split pane
+command! BD :bn|:bd#
 
+"statusline
+set laststatus=2
 set statusline=
 set statusline+=%#StLineBgOn#
 set statusline+=%y
@@ -311,3 +305,6 @@ set statusline+=%l/%L
 set statusline+=:%c\ 
 set statusline+=%#StLineBgOn#
 set statusline+=[%n]
+
+"set current working directory to
+autocmd BufEnter * silent! lcd %:p:h
