@@ -1,17 +1,19 @@
 {
     "tsserver.npm": "/usr/local/bin/npm",
     "tsserver.log": "verbose",
-    "coc.preferences.hoverTarget": "echo", 
+    "coc.preferences.hoverTarget": "preview", 
     "suggest.floatEnable": true,
-    "coc.preferences.enableFloatHighlight": false,
+    "suggest.autoTrigger": "always",
+    "coc.preferences.enableFloatHighlight": true,
     "coc.preferences.colorSupport": true,
     "diagnostic.refreshOnInsertMode": true,
+    "snippets.ultisnips.directories": ["UltiSnips", "~/.config/coc/ultisnips"],
     "snippets.extends": {
       "cpp": ["c"],
       "htmldjango": ["html"]
     },
     "eslint.options": {
-        "configFile": "/Users/yt/.config/nvim/eslintrc.json"
+        "configFile": "/Users/yt/.config/configstore/.eslintrc.json"
     },
     "html.enable": true,
     "html.format.enable": true,
