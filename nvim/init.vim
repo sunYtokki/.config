@@ -29,13 +29,13 @@ set termguicolors
     let g:gruvbox_italicize_strings="1"
     let g:gruvbox_italicize_comments = "1"
     set bg=light
-"colorscheme gruvbox
-
     let g:oceanic_next_terminal_italic = 1
+
+"colorscheme gruvbox
 colorscheme OceanicNext
 
-noremap  <silent><leader>light :colo gruvbox<CR> :set bg=light<CR>
-noremap  <silent><leader>dark :colo OceanicNext<CR>
+noremap  <silent><leader>li :colo gruvbox <bar>:set bg=light<CR>   
+noremap  <silent><leader>da :colo OceanicNext<CR>
 
 "=========================================== Coc
 let g:coc_global_extensions = [
@@ -255,9 +255,8 @@ inoremap <C-l> <Right>
 imap <C-v> <BS>v
 
     "insert blank line on nmap
-"nnoremap <Space> i<Space><esc>
-"nnoremap <Return> o<Space><BS><esc>
-nnoremap <Return> o<esc>
+nnoremap <Space><Space> a<Space><esc>
+nnoremap <S-Return> o<esc>
 
     "keep visual selection when shift indent
 vnoremap < <gv

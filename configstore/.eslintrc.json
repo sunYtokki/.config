@@ -16,8 +16,11 @@
     "import",
     "node",
     "promise",
-    "standard"
+    "standard",
+    "react"
   ],
+
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
 
   "globals": {
     "document": "readonly",

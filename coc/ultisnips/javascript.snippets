@@ -515,3 +515,23 @@ snippet aw "await"
 	await ${0:${VISUAL}}
 endsnippet
 
+snippet importreact
+	import React from 'react';
+	import ReactDOM from 'react-dom';
+	import './index.css';
+endsnippet
+
+snippet rrender
+	ReactDOM.render(
+		${1:${wrapper}},
+		document.getElementById('${2:${root}}')
+	);
+endsnippet
+
+snippet rcreateElement
+	React.createElement(
+		'${'1:${dom_node}},
+		{${2:${props}}},
+		${3:${contents}}
+	);
+endsnippet
