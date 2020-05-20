@@ -33,7 +33,7 @@ autocmd InsertLeave * set nocul
 "indent seting by file type
 set tabstop=4 shiftwidth=4 expandtab
 autocmd FileType text setlocal expandtab softtabstop=2 textwidth=76 spell spelllang=en_us
-autocmd FileType html,javascript setlocal expandtab softtabstop=2 shiftwidth=2  
+autocmd FileType html,javascript,css setlocal expandtab softtabstop=2 shiftwidth=2  
 
 "comment out remap
 autocmd FileType htmldjango setlocal ft=html

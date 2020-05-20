@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "coc-actions": ">=1.4.0",
-    "coc-clangd": ">=0.4.2",
+    "coc-clangd": ">=0.4.3",
     "coc-css": ">=1.2.2",
     "coc-dictionary": ">=1.2.2",
     "coc-emmet": ">=1.1.4",

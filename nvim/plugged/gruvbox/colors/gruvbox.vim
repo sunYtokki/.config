@@ -685,6 +685,7 @@ highlight StLineBgOn ctermfg=229 ctermbg=72 guifg=#fbf1c7 guibg=#689d6a
 highlight StLineConceal cterm=italic ctermfg=243 ctermbg=233 gui=italic guifg=#7c6f64 guibg=#ebdbb2
 highlight StLineDefault ctermfg=243 ctermbg=233 guifg=#7c6f64 guibg=#ebdbb2
 highlight StLineDir cterm=bold ctermfg=132 ctermbg=233 gui=bold guifg=#b16286 guibg=#ebdbb2"}}}
+highlight StLineFugitive ctermfg=172 ctermbg=233 guifg=#d79921 guibg=#ebdbb2
 
 
 " Plugin specific -------------------------------------------------------------

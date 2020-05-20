@@ -263,6 +263,7 @@ highlight StLineBgOn ctermfg=237 ctermbg=73 guifg=#343d46 guibg=#62b3b2
 highlight StLineConceal cterm=italic ctermfg=145 ctermbg=237 gui=italic guifg=#a7adba guibg=#343d46
 highlight StLineDefault ctermfg=145 ctermbg=237 guifg=#a7adba guibg=#343d46
 highlight StLineDir cterm=bold ctermfg=68 ctermbg=237 gui=bold guifg=#6699cc guibg=#343d46
+highlight StLineFugitive ctermfg=221 ctermbg=237 guifg=#fac863 guibg=#343d46
 " }}}
 
 let g:terminal_color_0=s:base00[0]

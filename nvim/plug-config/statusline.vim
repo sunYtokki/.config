@@ -7,7 +7,9 @@ set statusline+=%M
 set statusline+=%#StLineConceal#
 set statusline+=\ %{expand('%:~:h')}/
 set statusline+=%#StLineDir#
-set statusline+=%t
+set statusline+=%t\ 
+set statusline+=%#StLineFugitive#
+set statusline+=%{FugitiveStatusline()}
 set statusline+=%= "Right side settings
 set statusline+=%#StLineConceal#
 set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}\ 

@@ -15,6 +15,7 @@
     "eslint.options": {
         "configFile": "/Users/yt/.config/configstore/.eslintrc.json"
     },
+    "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
     "html.enable": true,
     "html.format.enable": true,
     "html.filetypes": [
