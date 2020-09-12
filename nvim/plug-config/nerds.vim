@@ -21,3 +21,6 @@ let g:NERDTreeIndicatorMapCustom = {
 vmap -- <plug>NERDCommenterToggle
 nmap -- <plug>NERDCommenterToggle
 
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCustomDelimiters = { 'asm': { 'left': '#'} }

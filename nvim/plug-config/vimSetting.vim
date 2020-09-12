@@ -32,12 +32,13 @@ autocmd InsertLeave * set nocul
 
 "indent seting by file type
 set tabstop=4 shiftwidth=4 expandtab
+autocmd FileType html,css,scss,javascriptreact,javascript,javascript.jsx setlocal expandtab softtabstop=2 shiftwidth=2  
 autocmd FileType text setlocal expandtab softtabstop=2 textwidth=76 spell spelllang=en_us
-autocmd FileType html,javascript,css setlocal expandtab softtabstop=2 shiftwidth=2  
 
-"comment out remap
+"remap some filetypes
+autocmd FileType javascript setlocal ft=javascript.jsx
 autocmd FileType htmldjango setlocal ft=html
-"autocmd FileType json syntax match Comment +\/\/.\+$+
+"autocmd FileType javascriptreact syntax match Comment +\/\/.\+$+
 "autocmd FileType htmldjango syntax match Comment +s/^\(.*\)$/<!-- \1 -->/+
 
 " :set list

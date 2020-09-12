@@ -1,7 +1,7 @@
 {
     "tsserver.npm": "/usr/local/bin/npm",
     "tsserver.log": "verbose",
-    "coc.preferences.hoverTarget": "preview", 
+    "coc.preferences.hoverTarget": "float", 
     "suggest.floatEnable": true,
     "suggest.autoTrigger": "always",
     "coc.preferences.enableFloatHighlight": true,
@@ -10,25 +10,30 @@
     "snippets.ultisnips.directories": ["UltiSnips", "~/.config/coc/ultisnips"],
     "snippets.extends": {
       "cpp": ["c"],
-      "htmldjango": ["html"]
+      "htmldjango": ["html"],
+      "javascript.jsx": ["javascript", "html"]
     },
     "eslint.options": {
         "configFile": "/Users/yt/.config/configstore/.eslintrc.json"
     },
-    "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+    "eslint.filetypes": [
+        "javascript", 
+        "javascriptreact", 
+        "typescript", 
+        "typescriptreact"],
     "html.enable": true,
     "html.format.enable": true,
     "html.filetypes": [
         "html",
-        "htmldjango"
-    ],
+        "htmldjango"],
     "python.autoComplete.extraPaths": [
       "${env:SPARK_HOME}/python",
-      "${env:SPARK_HOME}/python/pyspark"
-    ],
+      "${env:SPARK_HOME}/python/pyspark" ],
     "python.formatting.blackPath": "~/.local/bin/black",
     "prettier.printWidth": 60,
-    "smartf.timeout": 2000,
+    "prettier.stylelintIntegration": true,
+    "prettier.eslintIntegration": true,
+    "smartf.timeout": 1000,
     "clangd.path": "/usr/local/opt/llvm/bin/clangd",
     "clangd.enabled": true
 }

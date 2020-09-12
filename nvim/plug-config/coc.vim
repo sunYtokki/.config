@@ -7,6 +7,7 @@ let g:coc_global_extensions = [
   \ 'coc-eslint', 
   \ 'coc-json', 
   \ 'coc-html',
+  \ 'coc-css'
   \ ]
 
 "vim setting for coc
@@ -108,10 +109,10 @@ vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 "coc-smartf
-nmap f <Plug>(coc-smartf-forward)
-nmap F <Plug>(coc-smartf-backward)
-augroup Smartf
-  autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=#6638F0
-  autocmd User SmartfLeave :hi Conceal ctermfg=239 guifg=#504945
-augroup end
+"nmap f <Plug>(coc-smartf-forward)
+"nmap F <Plug>(coc-smartf-backward)
+"augroup Smartf
+"  autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=#6638F0
+"  autocmd User SmartfLeave :hi Conceal ctermfg=239 guifg=#504945
+"augroup end
 

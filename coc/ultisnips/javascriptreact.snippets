@@ -1,1 +1,32 @@
 extends javascript
+
+snippet stateful "React class component" w
+import React from 'react';
+
+export default class $1 extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>$2</h1>
+      </div>
+    );
+  }
+}
+endsnippet
+
+snippet stateless "React method component" w
+import React from 'react';
+
+const $1 = (props) => {
+  return (
+    <div>
+      <h1>$3</h1>
+    </div>
+  );
+}
+export default $2 ;
+endsnippet
+
+snippet console "console" w
+console.log($1);
+endsnippet

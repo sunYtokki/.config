@@ -22,6 +22,9 @@ call plug#begin('/Users/yt/.config/nvim/plugged')
     Plug '907th/vim-auto-save'
     Plug 'tpope/vim-surround'
 
+    "Latex
+    "Plug 'lervag/vimtex'
+
     "colorschemes
     Plug 'mhartington/oceanic-next'
     Plug 'morhetz/gruvbox'
