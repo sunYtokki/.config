@@ -3,7 +3,7 @@ nmap <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeGitStatusWithFlags = 1
 "let g:NERDTreeIgnore = ['^node_modules$']
 "let g:NERDTreeShowIgnoredStatus = 1
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
@@ -23,4 +23,7 @@ nmap -- <plug>NERDCommenterToggle
 
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
-let g:NERDCustomDelimiters = { 'asm': { 'left': '#'} }
+let g:NERDCustomDelimiters = { 
+    \'asm': { 'left': '#'},
+    \'javascript.js': {'left': '//'}
+    \}

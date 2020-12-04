@@ -17,8 +17,8 @@ set dir^=~/.backup//
 set foldmethod=manual
 augroup remember_folds
   autocmd!
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent! loadview
+  au BufWinLeave ?* mkview 
+  au BufWinEnter ?* silent! loadview 
 augroup END
 
 "change cursor and highlite line when insert mode

@@ -6,10 +6,10 @@
     "suggest.autoTrigger": "always",
     "coc.preferences.enableFloatHighlight": true,
     "coc.preferences.colorSupport": true,
+    "coc.preferences.jumpCommand": "split",
     "diagnostic.refreshOnInsertMode": true,
     "snippets.ultisnips.directories": ["UltiSnips", "~/.config/coc/ultisnips"],
     "snippets.extends": {
-      "cpp": ["c"],
       "htmldjango": ["html"],
       "javascript.jsx": ["javascript", "html"]
     },
@@ -33,7 +33,23 @@
     "prettier.printWidth": 60,
     "prettier.stylelintIntegration": true,
     "prettier.eslintIntegration": true,
-    "smartf.timeout": 1000,
+    "smartf.timeout": 1200,
     "clangd.path": "/usr/local/opt/llvm/bin/clangd",
-    "clangd.enabled": true
+    "clangd.enabled": false,
+    "clangd.semanticHighlighting": true,
+    "languageserver": {
+        "haskell": {
+          "command": "hie-wrapper",
+          "rootPatterns": [".stack.yaml", "cabal.config", "package.yaml"],
+          "filetypes": ["hs", "lhs", "haskell"],
+          "initializationOptions": {},
+          "settings": {
+            "languageServerHaskell": {
+              "hlintOn": true,
+              "maxNumberOfProblems": 10,
+              "completionSnippetsOn": true
+            }
+          }
+        }
+    }
 }

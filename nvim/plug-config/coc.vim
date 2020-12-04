@@ -1,14 +1,14 @@
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-actions',
-  \ 'coc-highlight',
-  \ 'coc-tslint-plugin',
-  \ 'coc-tsserver',
-  \ 'coc-eslint', 
-  \ 'coc-json', 
-  \ 'coc-html',
-  \ 'coc-css'
-  \ ]
+"let g:coc_global_extensions = [
+"  \ 'coc-snippets',
+"  \ 'coc-actions',
+"  \ 'coc-highlight',
+"  \ 'coc-tslint-plugin',
+"  \ 'coc-tsserver',
+"  \ 'coc-eslint', 
+"  \ 'coc-json', 
+"  \ 'coc-html',
+"  \ 'coc-css'
+"  \ ]
 
 "vim setting for coc
     " TextEdit might fail if hidden is not set.
@@ -70,7 +70,7 @@ function! s:show_documentation()
 endfunction
 
     " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>n <Plug>(coc-rename)
 
     "coc-highlight all occurrence
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -109,10 +109,10 @@ vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 "coc-smartf
-"nmap f <Plug>(coc-smartf-forward)
-"nmap F <Plug>(coc-smartf-backward)
-"augroup Smartf
-"  autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=#6638F0
-"  autocmd User SmartfLeave :hi Conceal ctermfg=239 guifg=#504945
-"augroup end
+nmap f <Plug>(coc-smartf-forward)
+nmap F <Plug>(coc-smartf-backward)
+augroup Smartf
+  autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=#6638F0
+  autocmd User SmartfLeave :hi Conceal ctermfg=239 guifg=#504945
+augroup end
 

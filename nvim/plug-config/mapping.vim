@@ -1,8 +1,8 @@
 "disable arrows on nmap
-nnoremap <Down> <Nop>
-nnoremap <Left> <Nop>
-nnoremap <Right> <Nop>
-nnoremap <Up> <Nop>
+"nnoremap <Down> <Nop>
+"nnoremap <Left> <Nop>
+"nnoremap <Right> <Nop>
+"nnoremap <Up> <Nop>
 
 "hjkl navigation on imap
 inoremap <C-h> <Left>
@@ -32,11 +32,12 @@ nnoremap <C-j> <C-w><C-j>
 
 "resize pane
 if bufwinnr(1)
-    noremap <S-up> :resize +1<CR>
-    noremap <S-down> :resize -1<CR>
-    noremap <S-right> :vertical resize +1<CR>
-    noremap <S-left> :vertical resize -1<CR>
+    noremap <S-up> :resize +5<CR>
+    noremap <S-down> :resize -5<CR>
+    noremap <S-right> :vertical resize +5<CR>
+    noremap <S-left> :vertical resize -5<CR>
 endif
 
 "close buffer without closing split pane
 command! BD :bn|:bd#
+"command! off :bd

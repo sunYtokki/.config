@@ -16,5 +16,6 @@ set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}\
 set statusline+=%#StLineDefault#
 set statusline+=%l/%L
 set statusline+=:%c\ 
+set statusline+=%{&fileencoding?&fileencoding:&encoding}\ 
 set statusline+=%#StLineBgOn#
 set statusline+=[%n]
