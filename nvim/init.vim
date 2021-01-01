@@ -7,6 +7,14 @@ call plug#begin('/Users/yt/.config/nvim/plugged')
     Plug 'ianks/vim-tsx'
     Plug 'jackguo380/vim-lsp-cxx-highlight'
 
+    "js
+    Plug 'dense-analysis/ale'
+
+    "tidal & haskell
+    Plug 'tidalcycles/vim-tidal'
+    Plug 'neovimhaskell/haskell-vim'
+    Plug 'https://github.com/supercollider/scvim.git'
+
     "file navigation
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -23,11 +31,6 @@ call plug#begin('/Users/yt/.config/nvim/plugged')
     Plug 'optroot/auto-pairs'
     Plug '907th/vim-auto-save'
     Plug 'tpope/vim-surround'
-
-    "tidal & haskell
-    Plug 'tidalcycles/vim-tidal'
-    Plug 'neovimhaskell/haskell-vim'
-    Plug 'https://github.com/supercollider/scvim.git'
 
     "Latex
     "Plug 'lervag/vimtex'

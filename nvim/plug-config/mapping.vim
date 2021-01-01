@@ -32,10 +32,10 @@ nnoremap <C-j> <C-w><C-j>
 
 "resize pane
 if bufwinnr(1)
-    noremap <S-up> :resize +5<CR>
-    noremap <S-down> :resize -5<CR>
-    noremap <S-right> :vertical resize +5<CR>
-    noremap <S-left> :vertical resize -5<CR>
+    noremap <S-k> :resize +5<CR>
+    noremap <S-j> :resize -5<CR>
+    noremap <S-l> :vertical resize +5<CR>
+    noremap <S-h> :vertical resize -5<CR>
 endif
 
 "close buffer without closing split pane

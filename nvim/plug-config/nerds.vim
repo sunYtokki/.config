@@ -3,6 +3,7 @@ nmap <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeGitStatusWithFlags = 1
 "let g:NERDTreeIgnore = ['^node_modules$']
 "let g:NERDTreeShowIgnoredStatus = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",

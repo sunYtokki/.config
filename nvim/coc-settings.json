@@ -8,9 +8,7 @@
     "coc.preferences.colorSupport": true,
     "coc.preferences.jumpCommand": "split",
     "diagnostic.refreshOnInsertMode": true,
-    "snippets.ultisnips.directories": ["UltiSnips", "~/.config/coc/ultisnips"],
     "snippets.extends": {
-      "htmldjango": ["html"],
       "javascript.jsx": ["javascript", "html"]
     },
     "eslint.options": {
@@ -20,7 +18,7 @@
         "javascript", 
         "javascriptreact", 
         "typescript", 
-        "typescriptreact"],
+       "typescriptreact"],
     "html.enable": true,
     "html.format.enable": true,
     "html.filetypes": [
@@ -34,9 +32,6 @@
     "prettier.stylelintIntegration": true,
     "prettier.eslintIntegration": true,
     "smartf.timeout": 1200,
-    "clangd.path": "/usr/local/opt/llvm/bin/clangd",
-    "clangd.enabled": false,
-    "clangd.semanticHighlighting": true,
     "languageserver": {
         "haskell": {
           "command": "hie-wrapper",
@@ -52,4 +47,4 @@
           }
         }
     }
-}
+} 
