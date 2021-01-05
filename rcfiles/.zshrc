@@ -1,6 +1,6 @@
 #If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export PATH=/usr/local/bin:$PATH
+export PATH=$HOME/.config/shfiles:$HOME/bin:/usr/local/bin:$PATH
+#export PATH=/usr/local/bin:$PATH
 
 #clangd path
     #If you need to have llvm first in your PATH run:
@@ -25,7 +25,6 @@ ZSH_THEME="funkygnzh"
 
 #display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
-
 KEYTIMEOUT=1
 
 source $ZSH/oh-my-zsh.sh
@@ -35,7 +34,6 @@ export LANG=en_US.UTF-8
 
 #export TERM=screen-256color
 
-
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
@@ -43,6 +41,8 @@ else
   export EDITOR='nvim'
 fi
 
+alias vim="nvim"
+alias ogvim="vim"
 
 #export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/noghde_modules/.bin:$PATH"
 
@@ -105,20 +105,17 @@ fi
 
 #sun's aliase
 alias icloud="cd  ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
-#alias digital="cd ~/Coding/Digital && java -jar Digital.jar"
 alias zshrc="nvim ~/.zshrc"
 alias bashrc="nvim ~/.bashrc"
 
-alias ytrc="nvim ~/.ytrc"
-
+export CONFIG="$HOME/.config"
 alias cdconfig="cd ~/.config"
-#alias vimrc="vim ~/.vimrc"
 alias nvimrc="nvim ~/.config/nvim/init.vim"
 alias cdnvim="cd ~/.config/nvim"
 #alias cdvim="cd ~/.vim"
+#alias vimrc="vim ~/.vimrc"
 nvim="~/.config/nvim"
-alias vim="nvim"
-alias ogvim="vim"
+
 
 alias ll='ls -lF'
 alias la='ls -laF'
@@ -134,17 +131,11 @@ alias rmswp='rm ~/.backup/*.swp'
 alias gcloudplt='gcloud compute ssh syk2145@plt-b'
 alias cuitvnc='ssh -C -L 5910:localhost:5903 syk2145@cadpc34.ee.columbia.edu'
 
-#shortcuts + iterm2
-#bindkey "[D" backward-word
-#bindkey "[C" forward-word
-#bindkey "^[a" beginning-of-line
-#bindkey "^[e" end-of-line
+alias diary='diary.sh'
 
 function mkcd() { mkdir $1; cd $1 ;}
 
-#alias pip=/usr/local/bin/pip3
-#alias python=/usr/local/bin/python3
-
+#Haskell path
 [ -f "/Users/yt/.ghcup/env" ] && source "/Users/yt/.ghcup/env" # ghcup-env
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -161,3 +152,5 @@ fi
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+export PYENV_ROOT=/Users/yt/.pyenv/shims/python

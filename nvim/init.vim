@@ -8,7 +8,7 @@ call plug#begin('/Users/yt/.config/nvim/plugged')
     Plug 'jackguo380/vim-lsp-cxx-highlight'
 
     "js
-    Plug 'dense-analysis/ale'
+    "Plug 'dense-analysis/ale'
 
     "tidal & haskell
     Plug 'tidalcycles/vim-tidal'
