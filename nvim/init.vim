@@ -1,62 +1,68 @@
-call plug#begin('/Users/yt/.config/nvim/plugged')
+if !exists('g:vscode')
 
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    call plug#begin('/Users/yt/.config/nvim/plugged')
 
-    "syntax highlighting
-    Plug 'sheerun/vim-polyglot'
-    Plug 'ianks/vim-tsx'
-    Plug 'jackguo380/vim-lsp-cxx-highlight'
+        Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-    "js
-    "Plug 'dense-analysis/ale'
+        "syntax highlighting
+        Plug 'sheerun/vim-polyglot'
+        Plug 'ianks/vim-tsx'
+        Plug 'jackguo380/vim-lsp-cxx-highlight'
 
-    "tidal & haskell
-    Plug 'tidalcycles/vim-tidal'
-    Plug 'neovimhaskell/haskell-vim'
-    Plug 'https://github.com/supercollider/scvim.git'
+        "js
+        "Plug 'dense-analysis/ale'
 
-    "file navigation
-    Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-    Plug 'ctrlpvim/ctrlp.vim'
+        "tidal & haskell
+        Plug 'tidalcycles/vim-tidal'
+        Plug 'neovimhaskell/haskell-vim'
+        Plug 'https://github.com/supercollider/scvim.git'
 
-    "git plug-ins
-    Plug 'airblade/vim-gitgutter'
-    Plug 'tpope/vim-fugitive'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'ryanoasis/vim-devicons'
+        "file navigation
+        Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+        Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+        Plug 'ctrlpvim/ctrlp.vim'
 
-    "convini
-    Plug 'scrooloose/nerdcommenter'
-    Plug 'optroot/auto-pairs'
-    Plug '907th/vim-auto-save'
-    Plug 'tpope/vim-surround'
+        "git plug-ins
+        Plug 'airblade/vim-gitgutter'
+        Plug 'tpope/vim-fugitive'
+        Plug 'Xuyuanp/nerdtree-git-plugin'
+        Plug 'ryanoasis/vim-devicons'
 
-    "Latex
-    "Plug 'lervag/vimtex'
+        "convini
+        Plug 'scrooloose/nerdcommenter'
+        Plug 'optroot/auto-pairs'
+        Plug '907th/vim-auto-save'
+        Plug 'tpope/vim-surround'
 
-    "colorschemes
-    Plug 'mhartington/oceanic-next'
-    Plug 'morhetz/gruvbox'
-    Plug 'lifepillar/vim-solarized8'
+        "Latex
+        "Plug 'lervag/vimtex'
 
-call plug#end()
+        "colorschemes
+        Plug 'mhartington/oceanic-next'
+        Plug 'morhetz/gruvbox'
+        Plug 'lifepillar/vim-solarized8'
 
-"=========================================== sources
-source $HOME/.config/nvim/plug-config/colors.vim
-source $HOME/.config/nvim/plug-config/coc.vim
-source $HOME/.config/nvim/plug-config/autopairs.vim
-source $HOME/.config/nvim/plug-config/autosave.vim
-source $HOME/.config/nvim/plug-config/ctrlp.vim
-source $HOME/.config/nvim/plug-config/gitGutter.vim
+    call plug#end()
+
+    "=========================================== sources
+    source $HOME/.config/nvim/plug-config/colors.vim
+    source $HOME/.config/nvim/plug-config/coc.vim
+    source $HOME/.config/nvim/plug-config/autopairs.vim
+    source $HOME/.config/nvim/plug-config/autosave.vim
+    source $HOME/.config/nvim/plug-config/ctrlp.vim
+    source $HOME/.config/nvim/plug-config/gitGutter.vim
+    source $HOME/.config/nvim/plug-config/mapping.vim
+    source $HOME/.config/nvim/plug-config/nerds.vim
+    source $HOME/.config/nvim/plug-config/statusline.vim
+    source $HOME/.config/nvim/plug-config/vimSetting.vim
+
+    "tidal setting
+    filetype plugin on
+    "open with neovim terminal instead of tmux when ft=.tidal
+    let g:tidal_target = "terminal" 
+    "let g:tidal_no_mappings = 1
+
+:endif
+
 source $HOME/.config/nvim/plug-config/mapping.vim
-source $HOME/.config/nvim/plug-config/nerds.vim
-source $HOME/.config/nvim/plug-config/statusline.vim
 source $HOME/.config/nvim/plug-config/vimSetting.vim
-
-"tidal setting
-filetype plugin on
-"open with neovim terminal instead of tmux when ft=.tidal
-let g:tidal_target = "terminal" 
-"let g:tidal_no_mappings = 1
-

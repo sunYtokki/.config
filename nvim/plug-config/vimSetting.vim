@@ -7,7 +7,8 @@ set undoreload=10000
 
 "misc
 set clipboard+=unnamedplus
-set number!
+set number 
+set numberwidth=2
 set mouse:a 
 set ignorecase
 set backupdir^=~/.backup

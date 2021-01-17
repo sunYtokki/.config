@@ -1,6 +1,5 @@
 {
-    "tsserver.npm": "/usr/local/bin/npm",
-    "tsserver.log": "verbose",
+    //-------- COC --------
     "coc.preferences.hoverTarget": "float", 
     "suggest.floatEnable": true,
     "suggest.autoTrigger": "always",
@@ -8,30 +7,34 @@
     "coc.preferences.colorSupport": true,
     "coc.preferences.jumpCommand": "split",
     "diagnostic.refreshOnInsertMode": true,
+    "smartf.timeout": 1200,
     "snippets.extends": {
       "javascript.jsx": ["javascript", "html"]
     },
+
+    //-------- JS --------
+    "tsserver.npm": "/usr/local/bin/npm",
+    "tsserver.log": "verbose",
     "eslint.options": {
-        "configFile": "/Users/yt/.config/configstore/.eslintrc.json"
+        //"configFile": "/Users/yt/.config/configstore/.eslintrc.json"
     },
     "eslint.filetypes": [
         "javascript", 
         "javascriptreact", 
         "typescript", 
-       "typescriptreact"],
+        "typescriptreact"],
+
     "html.enable": true,
     "html.format.enable": true,
     "html.filetypes": [
         "html",
         "htmldjango"],
-    "python.autoComplete.extraPaths": [
-      "${env:SPARK_HOME}/python",
-      "${env:SPARK_HOME}/python/pyspark" ],
-    "python.formatting.blackPath": "~/.local/bin/black",
+
     "prettier.printWidth": 60,
     "prettier.stylelintIntegration": true,
     "prettier.eslintIntegration": true,
-    "smartf.timeout": 1200,
+
+    //-------- Language Sever --------
     "languageserver": {
         "haskell": {
           "command": "hie-wrapper",
@@ -46,5 +49,43 @@
             }
           }
         }
-    }
+    },
+
+    //-------- Code Spell Checker --------
+    "cSpell.language": "en", // The Language local to use when spell checking. "en" and "en-GB" are currently supported.
+    "cSpell.maxNumberOfProblems": 100, // Controls the maximum number of spelling errors per document.
+    "cSpell.numSuggestions": 8, // Controls the number of suggestions shown.
+    "cSpell.minWordLength": 4, // The minimum length of a word before checking it against a dictionary.
+    "cSpell.enabledLanguageIds": [ // Specify file types to spell check.
+        "csharp",
+        "go",
+        "javascript",
+        "javascriptreact",
+        "markdown",
+        "php",
+        "plaintext",
+        "typescript",
+        "typescriptreact",
+        "yml"
+    ],
+    "cSpell.enabled": true, // Enable / Disable the spell checker.
+    "cSpell.showStatus": true, // Display the spell checker status on the status bar.
+    "cSpell.words": [], // Words to add to dictionary for a workspace.
+    "cSpell.allowCompoundWords": false, // Enable / Disable compound words like 'errormessage'
+    "cSpell.ignoreWords": ["behaviour"], // Words to be ignored and not suggested.
+    "cSpell.userWords": [], // User words to add to dictionary.  Should only be in the user settings.
+    "cSpell.ignorePaths": [ // Specify paths/files to ignore.
+        "node_modules",        // this will ignore anything the node_modules directory
+        "**/node_modules",     // the same for this one
+        "**/node_modules/**",  // the same for this one
+        "node_modules/**",     // Doesn't currently work due to how the current working directory is determined.
+        "vscode-extension",    //
+        ".git",                // Ignore the .git directory
+        "*.dll",               // Ignore all .dll files.
+        "**/*.dll"             // Ignore all .dll files
+    ],
+    "cSpell.flagWords": ["hte"], // flagWords - list of words to be always considered incorrect
+                                // This is useful for offensive words and common spelling errors.
+                                // For example "hte" should be "the"`
+    "cSpell.spellCheckDelayMs": 50 // Set the delay before spell checking the document. Default is 50.
 } 
